@@ -326,11 +326,11 @@ def grid_multi_yaxis() -> Grid:
             "AC1", [249481, 234174, 265986, 1344377, 913736, 1175732, 1648196, 497250, 826269, 1557254, 1050647,
                     1451204],
             yaxis_index=0,
-            color="#d14a61",
+            color="#5793f3",
         )
         .add_yaxis(
             "DC2", [51988, 66693, 177770, 41224, 353210, 306065, 572022, 315764, 194469, 65189, 56061, 392755],
-            yaxis_index=1,
+            yaxis_index=0,
             color="#5793f3",
         )
         .extend_axis(
@@ -342,6 +342,9 @@ def grid_multi_yaxis() -> Grid:
                 axisline_opts=opts.AxisLineOpts(
                     linestyle_opts=opts.LineStyleOpts(color="#d14a61")
                 ),
+                splitline_opts=opts.SplitLineOpts(
+                    is_show=True, linestyle_opts=opts.LineStyleOpts(opacity=1)
+                    ),
             )
         )
         .set_global_opts(
@@ -354,22 +357,27 @@ def grid_multi_yaxis() -> Grid:
                 axisline_opts=opts.AxisLineOpts(
                     linestyle_opts=opts.LineStyleOpts(color="#5793f3")
                 ),
-
-            )
+                axislabel_opts=opts.LabelOpts(formatter="{value}s") 
+            ),
+            tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="cross"),
+            datazoom_opts=[
+                opts.DataZoomOpts(type_="slider", orient="vertical",range_start=0, range_end=100),
+                opts.DataZoomOpts(type_="inside",range_start=0, range_end=100),
+            ]
         )
     )
     line = (
         Line()
         .add_xaxis(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
         .add_yaxis("SumProduction", [11937, 15699, 16980, 12078, 10588, 11675, 5725, 18107, 16535, 13649, 12036, 11370],
-                   yaxis_index=0,
-                   color="#675bba",
+                   yaxis_index=1,
+                   color="#d14a61",
                    label_opts=opts.LabelOpts(is_show=False),
                    )
     )
     bar.overlap(line)
     return Grid().add(
-        bar, opts.GridOpts(pos_left="5%", pos_right="20%"), is_control_axis_index=False
+        bar, opts.GridOpts(pos_left="5%", pos_right="20%"), is_control_axis_index=True
     )
 
 

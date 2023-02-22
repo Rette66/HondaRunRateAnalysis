@@ -42,18 +42,18 @@
         }
     </style>
     <div class="tab">
-            <button class="tablinks" onclick="showChart(event, 'cfa0cd3002434803bb42cd07aaf3ba02')">Monthly Production and Downtime</button>
-            <button class="tablinks" onclick="showChart(event, 'd8fa520e9e474123b500f89bc2513c7d')">Daily Production and Downtime</button>
-            <button class="tablinks" onclick="showChart(event, '3d68002e28ec47b286e7463832637ded')">pie example</button>
+            <button class="tablinks" onclick="showChart(event, 'f13b6ba5714b413db9d60ffffe0116d5')">Monthly Production and Downtime</button>
+            <button class="tablinks" onclick="showChart(event, 'f0c43e621ee542539ea67696dd511940')">Daily Production and Downtime</button>
+            <button class="tablinks" onclick="showChart(event, 'ac354d7426994f92982b405620d08ea4')">pie example</button>
     </div>
 
     <div class="box">
-                <div id="cfa0cd3002434803bb42cd07aaf3ba02" class="chart-container" style="width:900px; height:500px; "></div>
+                <div id="f13b6ba5714b413db9d60ffffe0116d5" class="chart-container" style="width:900px; height:500px; "></div>
     <script>
-            document.getElementById('cfa0cd3002434803bb42cd07aaf3ba02').style.width = document.getElementById('cfa0cd3002434803bb42cd07aaf3ba02').parentNode.clientWidth + 'px';
-        var chart_cfa0cd3002434803bb42cd07aaf3ba02 = echarts.init(
-            document.getElementById('cfa0cd3002434803bb42cd07aaf3ba02'), 'white', {renderer: 'canvas'});
-        var option_cfa0cd3002434803bb42cd07aaf3ba02 = {
+            document.getElementById('f13b6ba5714b413db9d60ffffe0116d5').style.width = document.getElementById('f13b6ba5714b413db9d60ffffe0116d5').parentNode.clientWidth + 'px';
+        var chart_f13b6ba5714b413db9d60ffffe0116d5 = echarts.init(
+            document.getElementById('f13b6ba5714b413db9d60ffffe0116d5'), 'white', {renderer: 'canvas'});
+        var option_f13b6ba5714b413db9d60ffffe0116d5 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -66,9 +66,9 @@
         "enabled": false
     },
     "color": [
-        "#d14a61",
         "#5793f3",
-        "#675bba",
+        "#5793f3",
+        "#d14a61",
         "#5470c6",
         "#91cc75",
         "#fac858",
@@ -83,7 +83,6 @@
         {
             "type": "bar",
             "name": "AC1",
-            "xAxisIndex": 0,
             "yAxisIndex": 0,
             "legendHoverLink": true,
             "data": [
@@ -122,7 +121,6 @@
         {
             "type": "bar",
             "name": "DC2",
-            "xAxisIndex": 0,
             "yAxisIndex": 0,
             "legendHoverLink": true,
             "data": [
@@ -163,7 +161,7 @@
             "name": "SumProduction",
             "connectNulls": false,
             "xAxisIndex": 0,
-            "yAxisIndex": 0,
+            "yAxisIndex": 1,
             "symbolSize": 4,
             "showSymbol": true,
             "smooth": false,
@@ -275,10 +273,10 @@
     ],
     "tooltip": {
         "show": true,
-        "trigger": "item",
+        "trigger": "axis",
         "triggerOn": "mousemove|click",
         "axisPointer": {
-            "type": "line"
+            "type": "cross"
         },
         "showContent": true,
         "alwaysShowContent": false,
@@ -353,6 +351,11 @@
                     "color": "#5793f3"
                 }
             },
+            "axisLabel": {
+                "show": true,
+                "margin": 8,
+                "formatter": "{value}s"
+            },
             "inverse": false,
             "position": "right",
             "offset": 80,
@@ -422,6 +425,32 @@
             "triggerEvent": false
         }
     ],
+    "dataZoom": [
+        {
+            "show": true,
+            "type": "slider",
+            "showDetail": true,
+            "showDataShadow": true,
+            "realtime": true,
+            "start": 0,
+            "end": 100,
+            "orient": "vertical",
+            "zoomLock": false,
+            "filterMode": "filter"
+        },
+        {
+            "show": true,
+            "type": "inside",
+            "showDetail": true,
+            "showDataShadow": true,
+            "realtime": true,
+            "start": 0,
+            "end": 100,
+            "orient": "horizontal",
+            "zoomLock": false,
+            "filterMode": "filter"
+        }
+    ],
     "grid": [
         {
             "show": false,
@@ -438,14 +467,14 @@
         }
     ]
 };
-        chart_cfa0cd3002434803bb42cd07aaf3ba02.setOption(option_cfa0cd3002434803bb42cd07aaf3ba02);
+        chart_f13b6ba5714b413db9d60ffffe0116d5.setOption(option_f13b6ba5714b413db9d60ffffe0116d5);
     </script>
-                <div id="d8fa520e9e474123b500f89bc2513c7d" class="chart-container" style="width:900px; height:500px; "></div>
+                <div id="f0c43e621ee542539ea67696dd511940" class="chart-container" style="width:900px; height:500px; "></div>
     <script>
-            document.getElementById('d8fa520e9e474123b500f89bc2513c7d').style.width = document.getElementById('d8fa520e9e474123b500f89bc2513c7d').parentNode.clientWidth + 'px';
-        var chart_d8fa520e9e474123b500f89bc2513c7d = echarts.init(
-            document.getElementById('d8fa520e9e474123b500f89bc2513c7d'), 'white', {renderer: 'canvas'});
-        var option_d8fa520e9e474123b500f89bc2513c7d = {
+            document.getElementById('f0c43e621ee542539ea67696dd511940').style.width = document.getElementById('f0c43e621ee542539ea67696dd511940').parentNode.clientWidth + 'px';
+        var chart_f0c43e621ee542539ea67696dd511940 = echarts.init(
+            document.getElementById('f0c43e621ee542539ea67696dd511940'), 'white', {renderer: 'canvas'});
+        var option_f0c43e621ee542539ea67696dd511940 = {
     "baseOption": {
         "series": [
             {
@@ -3939,14 +3968,14 @@
         }
     ]
 };
-        chart_d8fa520e9e474123b500f89bc2513c7d.setOption(option_d8fa520e9e474123b500f89bc2513c7d);
+        chart_f0c43e621ee542539ea67696dd511940.setOption(option_f0c43e621ee542539ea67696dd511940);
     </script>
-                <div id="3d68002e28ec47b286e7463832637ded" class="chart-container" style="width:900px; height:500px; "></div>
+                <div id="ac354d7426994f92982b405620d08ea4" class="chart-container" style="width:900px; height:500px; "></div>
     <script>
-            document.getElementById('3d68002e28ec47b286e7463832637ded').style.width = document.getElementById('3d68002e28ec47b286e7463832637ded').parentNode.clientWidth + 'px';
-        var chart_3d68002e28ec47b286e7463832637ded = echarts.init(
-            document.getElementById('3d68002e28ec47b286e7463832637ded'), 'white', {renderer: 'canvas'});
-        var option_3d68002e28ec47b286e7463832637ded = {
+            document.getElementById('ac354d7426994f92982b405620d08ea4').style.width = document.getElementById('ac354d7426994f92982b405620d08ea4').parentNode.clientWidth + 'px';
+        var chart_ac354d7426994f92982b405620d08ea4 = echarts.init(
+            document.getElementById('ac354d7426994f92982b405620d08ea4'), 'white', {renderer: 'canvas'});
+        var option_ac354d7426994f92982b405620d08ea4 = {
     "backgroundColor": "#2c343c",
     "animation": true,
     "animationThreshold": 2000,
@@ -4147,7 +4176,7 @@
         }
     ]
 };
-        chart_3d68002e28ec47b286e7463832637ded.setOption(option_3d68002e28ec47b286e7463832637ded);
+        chart_ac354d7426994f92982b405620d08ea4.setOption(option_ac354d7426994f92982b405620d08ea4);
     </script>
     </div>
 
