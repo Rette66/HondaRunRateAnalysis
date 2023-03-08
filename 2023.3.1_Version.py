@@ -347,62 +347,75 @@ def grid_multi_yaxis() -> Grid:
             "AC1", [249481, 234174, 265986, 1344377, 913736, 1175732, 1648196, 497250, 826269, 1557254, 1050647,
                     1451204],
             yaxis_index=0,
+            is_selected=False
         )
         .add_yaxis(
             "DC2", [51988, 66693, 177770, 41224, 353210, 306065, 572022, 315764, 194469, 65189, 56061, 392755],
             yaxis_index=0,
+            is_selected=False
         )
         .add_yaxis(
             "AF_ON", [267418, 382536, 500084, 1368401, 913629, 1426420, 1485105, 764584, 898635, 1025683, 634031,
                       1144921],
             yaxis_index=0,
+            is_selected=False
         )
         .add_yaxis(
             "EC1", [82981, 69736, 49334, 263522, 49667, 47461, 94307, 67292, 44055, 40359, 40164,
                       93488],
             yaxis_index=0,
+            is_selected=False
         )
         .add_yaxis(
             "FC1", [201009, 37109, 155357, 20210, 31522, 59378, 30557, 79550, 31228, 27610, 275928, 14759],
             yaxis_index=0,
+            is_selected=False
         )
         .add_yaxis(
             "FS1", [2111845, 1645723, 1830322, 1987318, 2144441, 1944600, 2397658, 1763843, 1797399, 2025782, 
                     2007526, 1880663],
             yaxis_index=0,
+            is_selected=False
         )
         .add_yaxis(
             "FC2", [2001686, 1501410, 1737311, 1918597, 2096801, 1902199, 2359521, 1676029, 1701428, 1934679,
                     1929687, 1818380],
             yaxis_index=0,
+            is_selected=False
         )
         .add_yaxis(
             "ICP_1", [27450, 23534, 154009, 56496, 69032, 69950, 62796, 61489, 141357, 254172, 41274, 267514],
             yaxis_index=0,
+            is_selected=False
         )
         .add_yaxis(
             "RS1", [113498, 21759, 79073, 44331, 264863, 13632, 427586, 30001, 25877, 38189, 112927, 132478],
             yaxis_index=0,
+            is_selected=False
         )
         .add_yaxis(
             "SC1", [1648672, 1393590, 1645052, 1873877, 2055907, 1893333, 2315078, 1544802, 1599914, 1849573,
                     1840984, 1820760],
             yaxis_index=0,
+            is_selected=False
         )
         .add_yaxis(
             "SC2", [1903989, 1444981, 1673941, 1881719, 2061525, 1847039, 2290815, 1598329, 1595863, 1868943,
                     1856394, 1767350],
             yaxis_index=0,
+            is_selected=False
         )
         .add_yaxis(
             "TC1", [1972464, 1513711, 1716461, 1929338, 2068730, 1871375, 2281982, 1669603, 1678217, 1933394,
                     1924222, 1818459],
             yaxis_index=0,
+            is_selected=False
         )
         .add_yaxis(
             "TC2", [1973504, 1505849, 1711107, 1924120, 2078330, 1854484, 2354385, 1585359, 753293, 949758, 
                     1056333, 1289564],
             yaxis_index=0,
+            is_selected=False
         )
         .extend_axis(
             yaxis=opts.AxisOpts(
@@ -413,6 +426,21 @@ def grid_multi_yaxis() -> Grid:
                 axisline_opts=opts.AxisLineOpts(
                     linestyle_opts=opts.LineStyleOpts(color="#d14a61")
                 ),
+                splitline_opts=opts.SplitLineOpts(
+                    is_show=True, linestyle_opts=opts.LineStyleOpts(opacity=1)
+                    ),
+            )
+        )
+        .extend_axis(
+            yaxis=opts.AxisOpts(
+                name="Attendance Rate",
+                # min_=-10,
+                # max_=20,
+                position="right",
+                axisline_opts=opts.AxisLineOpts(
+                    linestyle_opts=opts.LineStyleOpts(color="#67e0e3")
+                ),
+                axislabel_opts=opts.LabelOpts(formatter="{value}%"),
                 splitline_opts=opts.SplitLineOpts(
                     is_show=True, linestyle_opts=opts.LineStyleOpts(opacity=1)
                     ),
@@ -431,26 +459,42 @@ def grid_multi_yaxis() -> Grid:
                 axislabel_opts=opts.LabelOpts(formatter="{value}s") 
             ),
             tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="cross"),
-            toolbox_opts=opts.ToolboxOpts(is_show=True),
+            # toolbox_opts=opts.ToolboxOpts(is_show=True),
             datazoom_opts=[
-                opts.DataZoomOpts(type_="slider", orient="vertical",range_start=0, range_end=100),
+                opts.DataZoomOpts(type_="slider", orient="vertical", yaxis_index=0 ,range_start=0, range_end=100),
                 opts.DataZoomOpts(type_="inside",range_start=0, range_end=100),
             ]
         )
     )
     line = (
-        Line()
+        Line(
+            opts.InitOpts(is_fill_bg_color=True)
+        )
         .add_xaxis(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
         .add_yaxis("SumProduction", [11937, 15699, 16980, 12078, 10588, 11675, 5725, 18107, 16535, 13649, 12036, 11370],
-                   yaxis_index=1,
-                   color="#d14a61",
-                   label_opts=opts.LabelOpts(is_show=True),
-                   )
+                    yaxis_index=1,
+                    linestyle_opts=opts.LineStyleOpts(color="#d14a61"),
+                    itemstyle_opts=opts.ItemStyleOpts(color="#d14a61"),
+                    label_opts=opts.LabelOpts(is_show=True),
+                    )
     )
+    attendanceRate = (
+        Line()
+        .add_xaxis(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+        .add_yaxis("Attendance Rate(%)", [0, 0.49, 0.92, 11.36, 6.89, 4.49, 1.44, -5.02, -6.42, 2.65, 13.37, 14.47],
+                    yaxis_index=2,
+                    linestyle_opts=opts.LineStyleOpts(color="#67e0e3"),
+                    itemstyle_opts=opts.ItemStyleOpts(color="#67e0e3"),
+                    label_opts=opts.LabelOpts(is_show=True),
+                    )
+    )
+    bar.overlap(attendanceRate)
     bar.overlap(line)
     return Grid(init_opts=opts.InitOpts(theme=ThemeType.DARK)).add(
         bar, opts.GridOpts(pos_left="5%", pos_right="20%"), is_control_axis_index=True
     )
+
+
 
 def feb_attendance() -> Bar:
     bar = (

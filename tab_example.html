@@ -42,18 +42,18 @@
         }
     </style>
     <div class="tab">
-            <button class="tablinks" onclick="showChart(event, 'a12159ea75cd43c6b6436111b9d19364')">Monthly Production and Downtime</button>
-            <button class="tablinks" onclick="showChart(event, 'ac3a0f3882194654a565fcfb7c0314fb')">Daily Production and Downtime</button>
-            <button class="tablinks" onclick="showChart(event, 'c7294130bee747e380fcb889e17b8d52')">pie example</button>
+            <button class="tablinks" onclick="showChart(event, 'e696fc75bb91440ebeffd78aa7e71578')">Monthly Production and Downtime</button>
+            <button class="tablinks" onclick="showChart(event, '9448a1a19a824aa4bc435ccc8f1e0f13')">Daily Production and Downtime</button>
+            <button class="tablinks" onclick="showChart(event, '44d758983fd047d8abbd73964638c823')">pie example</button>
     </div>
 
     <div class="box">
-                <div id="a12159ea75cd43c6b6436111b9d19364" class="chart-container" style="width:900px; height:500px; "></div>
+                <div id="e696fc75bb91440ebeffd78aa7e71578" class="chart-container" style="width:900px; height:500px; "></div>
     <script>
-            document.getElementById('a12159ea75cd43c6b6436111b9d19364').style.width = document.getElementById('a12159ea75cd43c6b6436111b9d19364').parentNode.clientWidth + 'px';
-        var chart_a12159ea75cd43c6b6436111b9d19364 = echarts.init(
-            document.getElementById('a12159ea75cd43c6b6436111b9d19364'), 'dark', {renderer: 'canvas'});
-        var option_a12159ea75cd43c6b6436111b9d19364 = {
+            document.getElementById('e696fc75bb91440ebeffd78aa7e71578').style.width = document.getElementById('e696fc75bb91440ebeffd78aa7e71578').parentNode.clientWidth + 'px';
+        var chart_e696fc75bb91440ebeffd78aa7e71578 = echarts.init(
+            document.getElementById('e696fc75bb91440ebeffd78aa7e71578'), 'dark', {renderer: 'canvas'});
+        var option_e696fc75bb91440ebeffd78aa7e71578 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -563,6 +563,90 @@
         },
         {
             "type": "line",
+            "name": "Attendance Rate(%)",
+            "connectNulls": false,
+            "xAxisIndex": 0,
+            "yAxisIndex": 2,
+            "symbolSize": 4,
+            "showSymbol": true,
+            "smooth": false,
+            "clip": true,
+            "step": false,
+            "data": [
+                [
+                    "Jan",
+                    0
+                ],
+                [
+                    "Feb",
+                    0.49
+                ],
+                [
+                    "Mar",
+                    0.92
+                ],
+                [
+                    "Apr",
+                    11.36
+                ],
+                [
+                    "May",
+                    6.89
+                ],
+                [
+                    "Jun",
+                    4.49
+                ],
+                [
+                    "Jul",
+                    1.44
+                ],
+                [
+                    "Aug",
+                    -5.02
+                ],
+                [
+                    "Sep",
+                    -6.42
+                ],
+                [
+                    "Oct",
+                    2.65
+                ],
+                [
+                    "Nov",
+                    13.37
+                ],
+                [
+                    "Dec",
+                    14.47
+                ]
+            ],
+            "hoverAnimation": true,
+            "label": {
+                "show": true,
+                "margin": 8
+            },
+            "logBase": 10,
+            "lineStyle": {
+                "show": true,
+                "width": 1,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "solid",
+                "color": "#67e0e3"
+            },
+            "areaStyle": {
+                "opacity": 0
+            },
+            "itemStyle": {
+                "color": "#67e0e3"
+            },
+            "zlevel": 0,
+            "z": 0
+        },
+        {
+            "type": "line",
             "name": "SumProduction",
             "connectNulls": false,
             "xAxisIndex": 0,
@@ -633,10 +717,14 @@
                 "width": 1,
                 "opacity": 1,
                 "curveness": 0,
-                "type": "solid"
+                "type": "solid",
+                "color": "#d14a61"
             },
             "areaStyle": {
                 "opacity": 0
+            },
+            "itemStyle": {
+                "color": "#d14a61"
             },
             "zlevel": 0,
             "z": 0
@@ -658,22 +746,24 @@
                 "SC2",
                 "TC1",
                 "TC2",
+                "Attendance Rate(%)",
                 "SumProduction"
             ],
             "selected": {
-                "AC1": true,
-                "DC2": true,
-                "AF_ON": true,
-                "EC1": true,
-                "FC1": true,
-                "FS1": true,
-                "FC2": true,
-                "ICP_1": true,
-                "RS1": true,
-                "SC1": true,
-                "SC2": true,
-                "TC1": true,
-                "TC2": true,
+                "AC1": false,
+                "DC2": false,
+                "AF_ON": false,
+                "EC1": false,
+                "FC1": false,
+                "FS1": false,
+                "FC2": false,
+                "ICP_1": false,
+                "RS1": false,
+                "SC1": false,
+                "SC2": false,
+                "TC1": false,
+                "TC2": false,
+                "Attendance Rate(%)": true,
                 "SumProduction": true
             },
             "show": true,
@@ -838,6 +928,47 @@
                     "type": "solid"
                 }
             }
+        },
+        {
+            "name": "Attendance Rate",
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "axisLine": {
+                "show": true,
+                "onZero": true,
+                "onZeroAxisIndex": 0,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid",
+                    "color": "#67e0e3"
+                }
+            },
+            "axisLabel": {
+                "show": true,
+                "margin": 8,
+                "formatter": "{value}%"
+            },
+            "inverse": false,
+            "position": "right",
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            }
         }
     ],
     "title": [
@@ -852,68 +983,6 @@
             "triggerEvent": false
         }
     ],
-    "toolbox": {
-        "show": true,
-        "orient": "horizontal",
-        "itemSize": 15,
-        "itemGap": 10,
-        "left": "80%",
-        "feature": {
-            "saveAsImage": {
-                "type": "png",
-                "backgroundColor": "auto",
-                "connectedBackgroundColor": "#fff",
-                "show": true,
-                "title": "\u4fdd\u5b58\u4e3a\u56fe\u7247",
-                "pixelRatio": 1
-            },
-            "restore": {
-                "show": true,
-                "title": "\u8fd8\u539f"
-            },
-            "dataView": {
-                "show": true,
-                "title": "\u6570\u636e\u89c6\u56fe",
-                "readOnly": false,
-                "lang": [
-                    "\u6570\u636e\u89c6\u56fe",
-                    "\u5173\u95ed",
-                    "\u5237\u65b0"
-                ],
-                "backgroundColor": "#fff",
-                "textareaColor": "#fff",
-                "textareaBorderColor": "#333",
-                "textColor": "#000",
-                "buttonColor": "#c23531",
-                "buttonTextColor": "#fff"
-            },
-            "dataZoom": {
-                "show": true,
-                "title": {
-                    "zoom": "\u533a\u57df\u7f29\u653e",
-                    "back": "\u533a\u57df\u7f29\u653e\u8fd8\u539f"
-                },
-                "icon": {},
-                "filterMode": "filter"
-            },
-            "magicType": {
-                "show": true,
-                "type": [
-                    "line",
-                    "bar",
-                    "stack",
-                    "tiled"
-                ],
-                "title": {
-                    "line": "\u5207\u6362\u4e3a\u6298\u7ebf\u56fe",
-                    "bar": "\u5207\u6362\u4e3a\u67f1\u72b6\u56fe",
-                    "stack": "\u5207\u6362\u4e3a\u5806\u53e0",
-                    "tiled": "\u5207\u6362\u4e3a\u5e73\u94fa"
-                },
-                "icon": {}
-            }
-        }
-    },
     "dataZoom": [
         {
             "show": true,
@@ -924,6 +993,7 @@
             "start": 0,
             "end": 100,
             "orient": "vertical",
+            "yAxisIndex": 0,
             "zoomLock": false,
             "filterMode": "filter"
         },
@@ -956,14 +1026,14 @@
         }
     ]
 };
-        chart_a12159ea75cd43c6b6436111b9d19364.setOption(option_a12159ea75cd43c6b6436111b9d19364);
+        chart_e696fc75bb91440ebeffd78aa7e71578.setOption(option_e696fc75bb91440ebeffd78aa7e71578);
     </script>
-                <div id="ac3a0f3882194654a565fcfb7c0314fb" class="chart-container" style="width:900px; height:500px; "></div>
+                <div id="9448a1a19a824aa4bc435ccc8f1e0f13" class="chart-container" style="width:900px; height:500px; "></div>
     <script>
-            document.getElementById('ac3a0f3882194654a565fcfb7c0314fb').style.width = document.getElementById('ac3a0f3882194654a565fcfb7c0314fb').parentNode.clientWidth + 'px';
-        var chart_ac3a0f3882194654a565fcfb7c0314fb = echarts.init(
-            document.getElementById('ac3a0f3882194654a565fcfb7c0314fb'), 'white', {renderer: 'canvas'});
-        var option_ac3a0f3882194654a565fcfb7c0314fb = {
+            document.getElementById('9448a1a19a824aa4bc435ccc8f1e0f13').style.width = document.getElementById('9448a1a19a824aa4bc435ccc8f1e0f13').parentNode.clientWidth + 'px';
+        var chart_9448a1a19a824aa4bc435ccc8f1e0f13 = echarts.init(
+            document.getElementById('9448a1a19a824aa4bc435ccc8f1e0f13'), 'white', {renderer: 'canvas'});
+        var option_9448a1a19a824aa4bc435ccc8f1e0f13 = {
     "baseOption": {
         "series": [
             {
@@ -5099,14 +5169,14 @@
         }
     ]
 };
-        chart_ac3a0f3882194654a565fcfb7c0314fb.setOption(option_ac3a0f3882194654a565fcfb7c0314fb);
+        chart_9448a1a19a824aa4bc435ccc8f1e0f13.setOption(option_9448a1a19a824aa4bc435ccc8f1e0f13);
     </script>
-                <div id="c7294130bee747e380fcb889e17b8d52" class="chart-container" style="width:900px; height:500px; "></div>
+                <div id="44d758983fd047d8abbd73964638c823" class="chart-container" style="width:900px; height:500px; "></div>
     <script>
-            document.getElementById('c7294130bee747e380fcb889e17b8d52').style.width = document.getElementById('c7294130bee747e380fcb889e17b8d52').parentNode.clientWidth + 'px';
-        var chart_c7294130bee747e380fcb889e17b8d52 = echarts.init(
-            document.getElementById('c7294130bee747e380fcb889e17b8d52'), 'white', {renderer: 'canvas'});
-        var option_c7294130bee747e380fcb889e17b8d52 = {
+            document.getElementById('44d758983fd047d8abbd73964638c823').style.width = document.getElementById('44d758983fd047d8abbd73964638c823').parentNode.clientWidth + 'px';
+        var chart_44d758983fd047d8abbd73964638c823 = echarts.init(
+            document.getElementById('44d758983fd047d8abbd73964638c823'), 'white', {renderer: 'canvas'});
+        var option_44d758983fd047d8abbd73964638c823 = {
     "backgroundColor": "#2c343c",
     "animation": true,
     "animationThreshold": 2000,
@@ -5307,7 +5377,7 @@
         }
     ]
 };
-        chart_c7294130bee747e380fcb889e17b8d52.setOption(option_c7294130bee747e380fcb889e17b8d52);
+        chart_44d758983fd047d8abbd73964638c823.setOption(option_44d758983fd047d8abbd73964638c823);
     </script>
     </div>
 
