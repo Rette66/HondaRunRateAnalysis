@@ -459,7 +459,7 @@ def grid_multi_yaxis() -> Grid:
                 axislabel_opts=opts.LabelOpts(formatter="{value}s") 
             ),
             tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="cross"),
-            # toolbox_opts=opts.ToolboxOpts(is_show=True),
+            toolbox_opts=opts.ToolboxOpts(is_show=True),
             datazoom_opts=[
                 opts.DataZoomOpts(type_="slider", orient="vertical", yaxis_index=0 ,range_start=0, range_end=100),
                 opts.DataZoomOpts(type_="inside",range_start=0, range_end=100),
