@@ -1,5 +1,4 @@
 
-from sklearn.linear_model import LinearRegression
 # from sklearn.model_selection import train_test_split, GridSearchCV
 # from sklearn.preprocessing import StandardScaler
 # from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
@@ -18,6 +17,7 @@ from pyecharts import options as opts
 from pyecharts.charts import Bar, Calendar, Tab, Timeline, Pie, Line, Grid, Page, Liquid
 from pyecharts.globals import ThemeType
 
+from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 import numpy as np
  

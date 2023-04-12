@@ -1,0 +1,102 @@
+    
+    
+# from sklearn.model_selection import train_test_split, GridSearchCV
+# from sklearn.preprocessing import StandardScaler
+# from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+# from sklearn.linear_model import LogisticRegression
+# from sklearn.neighbors import KNeighborsClassifier
+# from sklearn.svm import SVC
+# from sklearn.tree import DecisionTreeClassifier
+# from sklearn.ensemble import RandomForestClassifier
+# from sklearn.ensemble import RandomForestClassifier
+# from sklearn.ensemble import AdaBoostClassifier
+# from sklearn.ensemble import GradientBoostingClassifier
+# from sklearn.ensemble import ExtraTreesClassifier
+# from sklearn.ensemble import VotingClassifier
+
+from pyecharts import options as opts
+from pyecharts.charts import Bar, Calendar, Tab, Timeline, Pie, Line, Grid, Page, Liquid
+from pyecharts.globals import ThemeType
+
+import matplotlib.pyplot as plt
+
+from sklearn.linear_model import LinearRegression
+import numpy as np
+ 
+if __name__ == '__main__':
+    X =[1,2,3,4,5,6,7,8,9,10,11,12]
+    SC2 = [1903989, 1444981, 1673941, 1881719, 2061525, 1847039, 2290815, 1598329, 1595863, 1868943,
+                    1856394, 1767350]
+    FC1 = [2111845, 1645723, 1830322, 1987318, 2144441, 1944600, 2397658, 1763843, 1797399, 2025782, 
+                    2007526, 1880663]
+    AFM10 = [267418, 382536, 500084, 1368401, 913629, 1426420, 1485105, 764584, 898635, 1025683, 634031,
+                      1144921]
+    Equipment = [56294, 49686, 32474, 19964, 41631, 42167, 20693, 68235, 32530, 58419, 42700, 37591]
+    Process = [634530, 662859, 436685, 237501, 204362, 233676, 160594, 485576, 609880, 512206, 405607, 378669]
+    
+    for i in range(0,12):
+        SC2[i] = (SC2[i]/60-10000)/10
+        FC1[i] = (FC1[i]/60)/10
+        AFM10[i] = (AFM10[i]/60)/40
+        Equipment[i] = Equipment[i]/60
+        Process[i] = (Process[i]/60)/20
+    
+ 
+    #转换成numpy的ndarray数据格式，n行1列,LinearRegression需要列格式数据，如下：
+    X_train = np.array(X).reshape((len(X), 1))
+    SC2_train = np.array(SC2).reshape((len(SC2), 1))
+    FC1_train = np.array(FC1).reshape((len(FC1), 1))
+    AFM10_train = np.array(AFM10).reshape((len(AFM10), 1))
+    Equipment_train = np.array(Equipment).reshape((len(Equipment), 1))
+    Process_train = np.array(Process).reshape((len(Process), 1))
+
+    # 转换后数据格式如下
+    # X_train = [[12.46], [0.25], [5.22], [11.3], [6.81], [4.59], [0.66], [14.53], [15.49], [14.43], [2.19], [1.35],
+    #            [10.02], [12.93], [5.93], [2.92], [12.81], [4.88], [13.11], [5.8]]
+    # Y_train = [[29.01], [4.7], [22.33], [24.99], [18.85], [14.89], [10.58], [36.84], [42.36], [39.73], [11.92], [7.45],
+    #            [22.9], [36.62], [16.04], [16.56], [31.55], [20.04], [35.26], [23.59]]
+ 
+ 
+    #新建一个线性回归模型，并把数据放进去对模型进行训练
+    SC2LineModel = LinearRegression()
+    SC2LineModel.fit(X_train, SC2_train)
+ 
+    FC1LineModel = LinearRegression()
+    FC1LineModel.fit(X_train, FC1_train)
+    
+    AFM10LineModel = LinearRegression()
+    AFM10LineModel.fit(X_train, AFM10_train)    
+    
+    EquipmentLineModel = LinearRegression()
+    EquipmentLineModel.fit(X_train, Equipment_train)    
+    
+    ProcessLineModel = LinearRegression()
+    ProcessLineModel.fit(X_train, Process_train)
+    
+    X1 = [13,14,15,16,17]
+    X_Predit = np.array(X1).reshape((len(X1),1))
+    
+    #用训练后的模型，进行预测
+    SC2_Predict = SC2LineModel.predict(X_train)
+    FC1_Predict = FC1LineModel.predict(X_train)
+    AFM10_Predict = AFM10LineModel.predict(X_train)
+    Equipment_Predit = EquipmentLineModel.predict(X_train)
+    Process_Predict = ProcessLineModel.predict(X_train)
+    
+    
+    # a1 = lineModel.coef_[0][0]
+    # b = lineModel.intercept_[0]
+    # print("y=%.4f*x+%.4f" % (a1,b))
+    
+    # print("januarly 2023: ", a1*13+b )
+ 
+    #对回归模型进行评分，这里简单使用训练集进行评分，实际很多时候用其他的测试集进行评分
+    # print("得分", SC2LineModel.score(X_train, SC2_train))
+    # print("准确", accuracy_score(X_train, SC2_train))
+ 
+    # 简单画图显示
+    plt.scatter(X, AFM10, c="blue")
+    plt.plot(X_train, AFM10_Predict, c="blue")
+    # plt.scatter(X, FC1, c="red")
+    # plt.plot(X_Predit, FC1_Predict, c="red")    
+    plt.show()
